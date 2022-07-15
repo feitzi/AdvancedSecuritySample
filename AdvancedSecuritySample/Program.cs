@@ -12,7 +12,7 @@ var app = builder.Build();
 app.MapGet("/login", async context =>
 {
     var user = context.Request.Query["user"];
-    var pass = context.Request.Query["pass"];
+    var pass = context.Request.Query["password"];
    
     Console.WriteLine($"User: {user} Password: {pass}");
     if (user == "admin" && pass == "admin")
@@ -28,6 +28,12 @@ app.MapGet("/login", async context =>
         await context.Response.WriteAsync("Login failed");
     }
 });
+app.MapGet("/getRandomNumber", () => {
+    var generator = new Random();
+    generator = generator ?? generator;
+    return generator.Next();
+    ;
+} )
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
