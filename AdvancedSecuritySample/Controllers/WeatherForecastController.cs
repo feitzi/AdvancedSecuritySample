@@ -32,6 +32,6 @@ public class WeatherForecastController : ControllerBase {
             return Redirect(newURl);
 
         }
-        return Redirect("BAD" + newURl);
+        return Redirect("BAD");
     }
 }
