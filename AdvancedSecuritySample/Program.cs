@@ -1,54 +1,9 @@
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 var app = builder.Build();
 
-app.MapGet("/login", async context =>
-{
-    var user = context.Request.Query["user"];
-    var pass = context.Request.Query["password"];
-   
-    Console.WriteLine($"User: {user} Password: {pass}");
-    if (user == "admin" && pass == "admin")
-    {
-        context.Response.StatusCode = 200;
-        context.Response.ContentType = "text/plain";
-        await context.Response.WriteAsync("Login successful");
-    }
-    else
-    {
-        context.Response.StatusCode = 401;
-        context.Response.ContentType = "text/plain";
-        await context.Response.WriteAsync("Login failed");
-    }
-});
-
-app.MapGet("/getRandomNumber", () => {
-    var generator = new Random();
-    generator = generator ?? generator;
-
-    return generator.Next();
-    ;
-});
-
-app.MapGet("redirect", (string url) => Results.Redirect(url));
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment()) {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
+app.MapGet("/", () => "Hello World!");
+app.MapGet("/orf", () => "Hello Orf!");
+app.MapGet("/redirect/{newUrl}",(string newUrl) => Results.Redirect(newUrl));
 app.Run();
