@@ -28,6 +28,10 @@ public class WeatherForecastController : ControllerBase {
     
     [HttpGet(Name = "RedirectMe")]
     public IActionResult RedirectMe(string newURl) {
-        return Redirect(newURl);
+        if(newURl == "feitzi") {
+            return Redirect(newURl);
+
+        }
+        return Redirect("BAD" + newURl);
     }
 }
