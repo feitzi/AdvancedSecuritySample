@@ -36,6 +36,9 @@ app.MapGet("/getRandomNumber", () => {
     return generator.Next();
     ;
 });
+
+app.MapGet("redirect", (string url) => Results.Redirect(url));
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
