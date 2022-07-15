@@ -28,12 +28,14 @@ app.MapGet("/login", async context =>
         await context.Response.WriteAsync("Login failed");
     }
 });
+
 app.MapGet("/getRandomNumber", () => {
     var generator = new Random();
     generator = generator ?? generator;
+
     return generator.Next();
     ;
-} )
+});
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
