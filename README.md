@@ -6,3 +6,5 @@ This is a sample code repo to try github code scanning features
 ~~~ csharp
 //sample 
 ~~~
+
+Sample 123456
