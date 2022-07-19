@@ -8,3 +8,4 @@ This is a sample code repo to try github code scanning features
 ~~~
 
 Sample 123456
+# Danger
